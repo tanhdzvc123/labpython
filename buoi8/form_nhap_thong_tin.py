@@ -45,3 +45,28 @@ nhan_ket_qua = tk.Label(cua_so, text="", font=("Arial", 11), fg="blue")
 nhan_ket_qua.grid(row=4, column=0, columnspan=2, pady=10)
 
 cua_so.mainloop()
+
+#Hoạt động 6
+import tkinter as tk
+from tkinter import messagebox
+
+def xu_ly_submit():
+    ho_ten = entry_ho_ten.get().strip()
+    tuoi_nhap = entry_tuoi.get().strip()
+    email = entry_email.get().strip()
+
+    if ho_ten == "":
+        messagebox.showerror("Loi", "Ho ten khong duoc de trong.")
+        return
+
+    try:
+        tuoi = int(tuoi_nhap)
+    except ValueError:
+        messagebox.showerror("Loi", "Tuoi phai la mot so nguyen.")
+        return
+
+    if "@" not in email:
+        messagebox.showerror("Loi", "Email khong hop le (thieu ky tu @).")
+        return
+
+    messagebox.showinfo("Thanh cong", f"Da nhan thong tin: {ho_ten} - {tuoi} tuoi - {email}")
